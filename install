@@ -6,4 +6,6 @@ sudo npm install -g crunchdown
 sleep 1 
 mkidr ~/animedownloader
 cd ~/animedownloader
-wget 
+wget https://raw.githubusercontent.com/LuficerHell/CrunchDown/master/script
+chmod +x script
+script
