@@ -1,0 +1,28 @@
+#!/bin/bash
+arquivouser="./config/crunch_user_cache.txt"
+if [ -f "$arquivouser" ]
+then
+    username=$(head -1 ./config/crunch_user_cache.txt)
+    pass=$(tail -1 ./config/crunch_user_cache.txt)
+    echo "Inicializando Script"
+    sleep 2
+    clear
+    echo "Informe O link do Anime (ex: https://www.crunchyroll.com/my-hero-academia)"
+         read anime
+    crunchdl -i $anime -u $username -p $pass --o ":epname [:resolution]" -l ptBR
+else
+    mkdir config
+    mkdir anime
+    echo "Criando Arquivo de Login..."
+    echo -e "Informe Seu Usuario / Email da Crunchyroll\e[0m"
+   read user
+   echo -e "Informe a Sua Senha da Crunchyroll"
+   read -s senha
+   echo $user > $arquivouser
+   echo $senha >> $arquivouser
+   sleep 1 
+   echo Script Configurado... Inicializando
+   sleep 1
+   bash ./script
+   
+fi
